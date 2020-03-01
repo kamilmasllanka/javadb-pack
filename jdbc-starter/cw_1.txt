@@ -26,7 +26,7 @@
         - Utwórz konstruktory:
             ConnectionFactory(String filename)
             ConnectionFactory()
-        - D​rugi konstruktor ma wywołać pierwszy konstruktor z argumentem
+        - Drugi konstruktor ma wywołać pierwszy konstruktor z argumentem
             filename=”​database.properties​”
         - Pobierz parametry bazy danych z pliku za pomocą metody
             getDataBaseProperties(String fileName)
@@ -37,6 +37,6 @@
             sprawdź czy działa - możesz użyć kodu z ​ ConnectionViaDataSource
 
 5.  Otwórz klasę ​ ConnectionViaDriverManager i ​ uzupełnij konfigurację
-    bazy danych (parametry: ​ DB_URL, DB_USER, DB_PASSWORD​ ) tak żeby połączyć
-    się ze swoją lokalną bazą MySQL. Uruchom metodę main i sprawdź czy połączenie
-    do bazy danych się powiodło.
+                                    bazy danych (parametry: ​ DB_URL, DB_USER, DB_PASSWORD​ ) tak żeby połączyć
+                                    się ze swoją lokalną bazą MySQL. Uruchom metodę main i sprawdź czy połączenie
+                                    do bazy danych się powiodło.
