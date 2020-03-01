@@ -4,7 +4,7 @@
              version="2.0">
 
     <!-- Początek konfiguracji dla PersistenceUnit o nazwie: 'pl.sda.jpa.starter' -->
-    <persistence-unit name="pl.sda.jpa.starter">
+    <persistence-unit name="pl.sda.jpa.starter">   <!-- dowolna nazwa -->
         <!-- lista klas do mapowania do bazy danych -->
         <class>pl.sda.jpa.starter.basic.CoachEntity</class>
 
@@ -13,21 +13,21 @@
 
         <properties>
             <!-- ustawienia połączenie do bazy danych -->
-            <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />   <!-- jakim sterownikiem bedziemy sie posługiwać w połaczniu z bazą danych-->
             <!-- url (adres) do bazy danych -->
             <!-- zobacz komentarz w klasie ConnectionViaDriverManager do DB_URL -->
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/jpa_test?useSSL=false&amp;serverTimezone=Europe/Warsaw" />
             <property name="javax.persistence.jdbc.user" value="root" />
-            <property name="javax.persistence.jdbc.password" value="root" />
+            <property name="javax.persistence.jdbc.password" value="qwerty" />
 
             <!-- Uwaga - przy nazwach parametrów specyficznych dla Hibernate dodajemy prefix hibernate. !-->
             <!-- wyświetlamy na konsolę wszystkie zapytania SQL, które wywołuje dla nas Hibernate -->
             <property name="hibernate.show_sql" value="true" />
             <!-- http://docs.jboss.org/hibernate/orm/5.0/userguide/html_single/Hibernate_User_Guide.html#configurations-hbmddl -->
             <!-- opcja 'create' = usuń i odwtórz strukturę bazy danych przy starcie aplikacji, inne opcje: 'create-only', 'create-drop', 'drop', 'none' -->
-            <property name="hibernate.hbm2ddl.auto" value="none" />
+            <property name="hibernate.hbm2ddl.auto" value="none" />   <!-- jesli ustawimy na create to wtedy hibernate wygeneruje nam schemat bazy danych-->
             <!-- SQL dialekt -->
-            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect" />
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect" />   <!-- wybieramy jaki dialekt mySQL ma używać poniważ Hibernate jest kompatybilny ze wszystkimi-->
         </properties>
     </persistence-unit>
 
@@ -37,7 +37,7 @@
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/jpa_test?useSSL=false&amp;serverTimezone=Europe/Warsaw" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/school?useSSL=false&amp;serverTimezone=Europe/Warsaw" />  <!-- zmiana odniesienia do bazy danych-->
             <property name="javax.persistence.jdbc.user" value="root" />
             <property name="javax.persistence.jdbc.password" value="root" />
 

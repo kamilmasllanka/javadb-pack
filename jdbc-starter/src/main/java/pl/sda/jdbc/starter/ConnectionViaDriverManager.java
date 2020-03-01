@@ -1,3 +1,11 @@
+/*
+5.  Otwórz klasę ​ ConnectionViaDriverManager i ​ uzupełnij konfigurację
+    bazy danych (parametry: ​ DB_URL, DB_USER, DB_PASSWORD​ ) tak żeby połączyć
+    się ze swoją lokalną bazą MySQL. Uruchom metodę main i sprawdź czy połączenie
+    do bazy danych się powiodło.
+ */
+
+
 package pl.sda.jdbc.starter;
 
 import org.slf4j.Logger;
@@ -21,10 +29,9 @@ public class ConnectionViaDriverManager {
      * <b>{nazwa_bazy_danych}</b> - nazwa bazy z którą chcemy się połączyć<br />
      * <b>{parametry}</b> - dodatkowe parametry, które chcemy przekazać przy łączeniu się z bazą - są opcjonalne<br />
      */
-    private static final String DB_URL = "";
-
-    private static final String DB_USER = "";
-    private static final String DB_PASSWORD = "";
+    private static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/classicmodels?useSSL=false&serverTimezone=Europe/Warsaw";
+    private static final String DB_USER = "root";
+    private static final String DB_PASSWORD = "qwerty";
 
     public static void main(String[] args) {
         try {

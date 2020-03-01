@@ -1,3 +1,9 @@
+/*
+3.  Znajdź klasę ​ JpaBasic ​ uruchom i sprawdź czy dane zapisały się w bazie. Dodaj kilku
+    dodatkowych trenerów do bazy danych. Usuń ostatniego trenera z listy za pomocą
+    metody: ​ entityManager.remove(coachEntity)
+ */
+
 package pl.sda.jpa.starter.basic;
 
 import javax.persistence.*;
@@ -16,7 +22,7 @@ public class JpaBasic {
             /**
               * tworzymy nową instancję EntityManager
               */
-            entityManager = entityManagerFactory.createEntityManager();
+            entityManager = entityManagerFactory.createEntityManager();  //pojedyńcze
 
             /**
              * Do pracy z bazą danych potrzebujemy transakcji
@@ -31,7 +37,13 @@ public class JpaBasic {
              * Zapisujemy encję w bazie danych
              */
             CoachEntity coachEntity = new CoachEntity("Vlad Mihalcea");
-            entityManager.remove(coachEntity);
+            CoachEntity coachEntity1 = new CoachEntity("Mihalcea Vlad");
+            CoachEntity coachEntity2 = new CoachEntity("Marcin Cool");
+     //       entityManager.remove(coachEntity);
+     //       entityManager.persist(coachEntity1);
+     //       entityManager.persist(coachEntity2);
+            CoachEntity ent = entityManager.find(CoachEntity.class, 3);
+            entityManager.remove(ent);
 
             /**
              * Wyciągamy wszystkie encje zapisane w bazie danych

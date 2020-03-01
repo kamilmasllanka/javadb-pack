@@ -1,3 +1,6 @@
+
+//2.  Użyj konstrukcji ​try-with-resources do automatycznego zamknięcia obiektu Connection
+
 package pl.sda.jdbc.starter;
 
 import com.mysql.cj.jdbc.MysqlDataSource;
@@ -6,14 +9,15 @@ import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Collection;
 
 public class ConnectionViaDataSource {
     private static Logger logger = LoggerFactory.getLogger(ConnectionViaDataSource.class);
 
-    private static final String DB_SERVER_NAME = "";
-    private static final String DB_NAME = "";
-    private static final String DB_USER = "";
-    private static final String DB_PASSWORD = "";
+    private static final String DB_SERVER_NAME = "127.0.0.1";
+    private static final String DB_NAME = "classicmodels";
+    private static final String DB_USER = "root";
+    private static final String DB_PASSWORD = "qwerty";
     private static final int DB_PORT = 3306;
 
     public static void main(String[] args) {
@@ -41,32 +45,43 @@ public class ConnectionViaDataSource {
         /**
          * Krok 2: Otwieramy połączenie do bazy danych
          */
-        Connection connection = null;
-        try {
-            connection = dataSource.getConnection();
+//        Connection connection = null;
+        try (Connection connection = dataSource.getConnection())
+         {
             logger.info("Connected database successfully...");
-
-            /**
-             * Krok 3: Pobieramy informacje o bazie danych i połączeniu
-             */
             logger.info("Connection = " + connection);
             logger.info("Database name = " + connection.getCatalog());
         } catch (SQLException e) {
-            /**
-             * Krok 4: Obsługa wyjątków które mogą pojawić się w trakcie pracy z bazą danych
-             */
-            logger.error("Error during using connection", e);
-        } finally {
-            /**
-             * Krok 5: Zawsze zamykamy połączenie po skończonej pracy!
-             */
-            try {
-                if (connection != null) {
-                    connection.close();
-                }
-            } catch (SQLException e) {
-                logger.error("Error during closing connection", e);
-            }
+            logger.error("Error during closing connection", e);
         }
     }
 }
+
+//        try {
+//            connection = dataSource.getConnection();
+//            logger.info("Connected database successfully...");
+//
+//            /**
+//             * Krok 3: Pobieramy informacje o bazie danych i połączeniu
+//             */
+//            logger.info("Connection = " + connection);
+//            logger.info("Database name = " + connection.getCatalog());
+//        } catch (SQLException e) {
+//            /**
+//             * Krok 4: Obsługa wyjątków które mogą pojawić się w trakcie pracy z bazą danych
+//             */
+//            logger.error("Error during using connection", e);
+//        } finally {
+//            /**
+//             * Krok 5: Zawsze zamykamy połączenie po skończonej pracy!
+//             */
+//            try {
+//                if (connection != null) {
+//                    connection.close();
+//                }
+//            } catch (SQLException e) {
+//                logger.error("Error during closing connection", e);
+//            }
+//        }
+//    }
+//}
