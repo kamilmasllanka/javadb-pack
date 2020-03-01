@@ -24,14 +24,14 @@ import javax.persistence.Table;
         private String name;
 
         @Column(name = "yearOfStudy")
-        private int yearOfStudy;
+        private String yearOfStudy;
 
         @Column(name = "adnotations")
         private String adnotations;
 
         StudentEntity() {}
 
-        public StudentEntity(String name, int yearOfStudy, String adnotations) {
+        public StudentEntity(String name, String yearOfStudy, String adnotations) {
             this.name = name;
             this.yearOfStudy = yearOfStudy;
             this.adnotations = adnotations;
@@ -41,15 +41,19 @@ import javax.persistence.Table;
             return id;
         }
 
-        public int getYearOfStudy() {
-            return yearOfStudy;
-        }
+    public String getName() {
+        return name;
+    }
 
-        public String getAdnotations() {
-            return adnotations;
-        }
+    public String getYearOfStudy() {
+        return yearOfStudy;
+    }
 
-        @Override
+    public String getAdnotations() {
+        return adnotations;
+    }
+
+    @Override
         public String toString() {
             return "StudentEntity{" +
                     "id=" + id +

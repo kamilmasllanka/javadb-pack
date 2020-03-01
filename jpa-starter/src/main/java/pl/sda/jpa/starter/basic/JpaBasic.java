@@ -6,6 +6,8 @@
 
 package pl.sda.jpa.starter.basic;
 
+import pl.sda.jpa.starter.inheritance.Student;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -36,14 +38,30 @@ public class JpaBasic {
             /**
              * Zapisujemy encję w bazie danych
              */
-            CoachEntity coachEntity = new CoachEntity("Vlad Mihalcea");
-            CoachEntity coachEntity1 = new CoachEntity("Mihalcea Vlad");
-            CoachEntity coachEntity2 = new CoachEntity("Marcin Cool");
-     //       entityManager.remove(coachEntity);
-     //       entityManager.persist(coachEntity1);
-     //       entityManager.persist(coachEntity2);
-            CoachEntity ent = entityManager.find(CoachEntity.class, 3);
-            entityManager.remove(ent);
+//            CoachEntity coachEntity = new CoachEntity("Vlad Mihalcea");
+//            CoachEntity coachEntity1 = new CoachEntity("Mihalcea Vlad");
+//            CoachEntity coachEntity2 = new CoachEntity("Marcin Cool");
+//     //       entityManager.remove(coachEntity);
+//     //       entityManager.persist(coachEntity1);
+//     //       entityManager.persist(coachEntity2);
+//            CoachEntity ent = entityManager.find(CoachEntity.class, 3);
+//            entityManager.remove(ent);
+
+            StudentEntity studentEntity = new StudentEntity("Vlad Mihalcea","1990","qwert");
+            StudentEntity studentEntity1 = new StudentEntity("Michała Tracz","2020","qwert");
+            StudentEntity studentEntity2 = new StudentEntity("Arek Żurek","2019","qwert");
+            StudentEntity studentEntity3 = new StudentEntity("Tomasz Sołtys","2020","qwert");
+            entityManager.persist(studentEntity);
+            entityManager.persist(studentEntity1);
+            entityManager.persist(studentEntity2);
+            entityManager.persist(studentEntity3);
+
+////
+//            "id=" + id +
+//                    ", name='" + name + '\'' +
+//                    ", yearOfStudy=" + yearOfStudy +
+//                    ", adnotations='" + adnotations + '\'' +
+//                    '}';
 
             /**
              * Wyciągamy wszystkie encje zapisane w bazie danych
@@ -51,6 +69,10 @@ public class JpaBasic {
             TypedQuery<CoachEntity> query = entityManager.createQuery("from CoachEntity", CoachEntity.class);
             List<CoachEntity> coaches = query.getResultList();
             System.out.println("coaches = " + coaches);
+
+            TypedQuery<StudentEntity> queryStudent = entityManager.createQuery("from StudentEntity", StudentEntity.class);
+            List<StudentEntity> student = queryStudent.getResultList();
+            System.out.println("school = " + student);
 
             /**
              * Kończymy (commitujemy) transakcję - wszystkie dane powinny być zapisane w bazie
